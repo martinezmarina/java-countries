@@ -85,9 +85,9 @@ public class CountryController {
         Country medCountry = null;
         int medId = myList.size() / 2;
         for(Country c : myList){
-            if(myList.size() % 2 == 0 && medId == c.getCountryid()){
+            if(myList.size() % 2 == 0 && Math.round(medId) == c.getCountryid()){
                 medCountry = c;
-            } else if(Math.round(medId) == c.getCountryid()){
+            } else if(medId == c.getCountryid()){
                 medCountry = c;
             }
         }
