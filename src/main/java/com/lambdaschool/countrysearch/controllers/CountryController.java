@@ -78,4 +78,19 @@ public class CountryController {
         }
         return new ResponseEntity<>(maxCountry, HttpStatus.OK);
     }
+    @GetMapping(value = "/population/median")
+    public ResponseEntity<?> findMedianPopulation(){
+        List<Country> myList = new ArrayList<>();
+        countrepos.findAll().iterator().forEachRemaining(myList::add);
+        Country medCountry = null;
+        int medId = myList.size() / 2;
+        for(Country c : myList){
+            if(myList.size() % 2 == 0 && medId == c.getCountryid()){
+                medCountry = c;
+            } else if(Math.round(medId) == c.getCountryid()){
+                medCountry = c;
+            }
+        }
+        return new ResponseEntity<>(medCountry, HttpStatus.OK);
+    }
 }
